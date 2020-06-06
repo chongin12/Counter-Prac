@@ -9,12 +9,16 @@
 import UIKit
 
 class ViewController: UIViewController {
+    private var counterView = CounterView()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        counterView.setup()
+    }
+    
+    override func loadView() {
+        self.view = counterView
     }
 
-
 }
-

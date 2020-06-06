@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		88498F159EBD3A040918CDF7 /* Pods_Counter_Prac.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EE178512E5EBC717F931B886 /* Pods_Counter_Prac.framework */; };
+		AB786B4B248B50D60089B407 /* CounterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB786B4A248B50D60089B407 /* CounterView.swift */; };
 		AB895A06248A1DBA009D6B0C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB895A05248A1DBA009D6B0C /* AppDelegate.swift */; };
 		AB895A08248A1DBA009D6B0C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB895A07248A1DBA009D6B0C /* SceneDelegate.swift */; };
 		AB895A0A248A1DBA009D6B0C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB895A09248A1DBA009D6B0C /* ViewController.swift */; };
@@ -17,6 +18,7 @@
 /* Begin PBXFileReference section */
 		1BEBFCCFBF4F4DCD70CC2C10 /* Pods-Counter-Prac.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Counter-Prac.release.xcconfig"; path = "Target Support Files/Pods-Counter-Prac/Pods-Counter-Prac.release.xcconfig"; sourceTree = "<group>"; };
 		2C814E57140746F4668D6C80 /* Pods-Counter-Prac.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Counter-Prac.debug.xcconfig"; path = "Target Support Files/Pods-Counter-Prac/Pods-Counter-Prac.debug.xcconfig"; sourceTree = "<group>"; };
+		AB786B4A248B50D60089B407 /* CounterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CounterView.swift; sourceTree = "<group>"; };
 		AB895A02248A1DBA009D6B0C /* Counter-Prac.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Counter-Prac.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB895A05248A1DBA009D6B0C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AB895A07248A1DBA009D6B0C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -72,6 +74,7 @@
 				AB895A09248A1DBA009D6B0C /* ViewController.swift */,
 				AB895A0E248A1DBB009D6B0C /* Assets.xcassets */,
 				AB895A13248A1DBB009D6B0C /* Info.plist */,
+				AB786B4A248B50D60089B407 /* CounterView.swift */,
 			);
 			path = "Counter-Prac";
 			sourceTree = "<group>";
@@ -201,6 +204,7 @@
 				AB895A0A248A1DBA009D6B0C /* ViewController.swift in Sources */,
 				AB895A06248A1DBA009D6B0C /* AppDelegate.swift in Sources */,
 				AB895A08248A1DBA009D6B0C /* SceneDelegate.swift in Sources */,
+				AB786B4B248B50D60089B407 /* CounterView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
