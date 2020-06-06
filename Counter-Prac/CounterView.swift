@@ -9,12 +9,31 @@
 import Foundation
 import UIKit
 import SnapKit
+import ReactorKit
+import RxCocoa
 
 class CounterView: UIView {
+    weak var vc: CounterViewController?
+    
+    init(controlBy viewController: CounterViewController) {
+        self.vc = viewController
+        super.init(frame: UIScreen.main.bounds)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    private let baseView: UIView = {
+        let v = UIView()
+        v.backgroundColor = .white
+        return v
+    }()
+    
     private let backgroundView: UIView = {
         let v = UIView()
         v.backgroundColor = .white
-        return v;
+        return v
     }()
     
     private let valueLabel: UILabel = {
@@ -26,13 +45,13 @@ class CounterView: UIView {
     
     private let increaseButton: UIButton = {
         let v = UIButton(type: .roundedRect)
-        v.backgroundColor = .brown
+        v.setTitle("+", for: .normal)
         return v
     }()
     
     private let decreaseButton: UIButton = {
         let v = UIButton(type: .roundedRect)
-        v.backgroundColor = .brown
+        v.setTitle("-", for: .normal)
         return v
     }()
     
@@ -40,6 +59,8 @@ class CounterView: UIView {
         let v = UIActivityIndicatorView(style: .medium)
         return v
     }()
+    
+    var disposeBag: DisposeBag = DisposeBag()
     
     func setup() {
         setupUI()
@@ -59,7 +80,8 @@ extension CounterView {
     }
     
     private func addSubviews() {
-        self.addSubview(self.backgroundView)
+        self.addSubview(self.baseView)
+        self.baseView.addSubview(self.backgroundView)
         self.backgroundView.addSubview(self.valueLabel)
         self.backgroundView.addSubview(self.increaseButton)
         self.backgroundView.addSubview(self.decreaseButton)
@@ -67,6 +89,9 @@ extension CounterView {
     }
     
     private func setLayout() {
+        self.baseView.snp.makeConstraints {
+            $0.top.left.bottom.right.equalToSuperview()
+        }
         self.backgroundView.snp.makeConstraints {
             $0.top.left.bottom.right.equalTo(safeAreaLayoutGuide)
         }
@@ -89,5 +114,34 @@ extension CounterView {
             $0.top.equalTo(valueLabel).offset(30)
             $0.width.height.equalTo(45)
         }
+    }
+}
+
+extension CounterView: View {
+    func bind(reactor: CounterViewReactor) {
+        increaseButton.rx.tap
+            .map { Reactor.Action.increase }
+            .bind(to: reactor.action)
+            .disposed(by: disposeBag)
+        
+        decreaseButton.rx.tap
+            .map { Reactor.Action.decrease }
+            .bind(to: reactor.action)
+            .disposed(by: disposeBag)
+        
+        reactor.state
+            .map { $0.value }
+            .distinctUntilChanged()
+            .map { "\($0)" }
+            .bind(to: valueLabel.rx.text)
+            .disposed(by: disposeBag)
+        
+        reactor.state
+            .map { $0.isLoading }
+            .distinctUntilChanged()
+            .bind(to: activityIndicatorView.rx.isAnimating)
+            .disposed(by: disposeBag)
+        
+        
     }
 }

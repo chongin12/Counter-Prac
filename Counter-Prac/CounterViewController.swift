@@ -1,24 +1,25 @@
 //
-//  ViewController.swift
+//  CounterViewController.swift
 //  Counter-Prac
 //
-//  Created by 정종인 on 2020/06/05.
+//  Created by 정종인 on 2020/06/07.
 //  Copyright © 2020 swmaestro10th. All rights reserved.
 //
 
+import Foundation
 import UIKit
 
-class ViewController: UIViewController {
-    private var counterView = CounterView()
-
+class CounterViewController: UIViewController {
+    private lazy var counterView = CounterView(controlBy: self)
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        
         counterView.setup()
+        counterView.reactor = CounterViewReactor()
     }
     
     override func loadView() {
         self.view = counterView
     }
-
 }

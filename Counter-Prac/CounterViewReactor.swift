@@ -38,13 +38,13 @@ class CounterViewReactor: Reactor {
         case .increase:
             return Observable.concat([
                 Observable.just(Mutation.isLoading(true)),
-                Observable.just(Mutation.increaseValue),
+                Observable.just(Mutation.increaseValue).delay(.milliseconds(500), scheduler: MainScheduler.instance),
                 Observable.just(Mutation.isLoading(false))
             ])
         case .decrease:
             return Observable.concat([
                 Observable.just(Mutation.isLoading(true)),
-                Observable.just(Mutation.decreaseValue),
+                Observable.just(Mutation.decreaseValue).delay(.milliseconds(500), scheduler: MainScheduler.instance),
                 Observable.just(Mutation.isLoading(false))
             ])
         }
